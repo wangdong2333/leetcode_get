@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    输入一个链表，按链表从尾到头的顺序返回一个ArrayList。 -->
+    <script>
+        function printListFromTailToHead(head) {
+          //定义指针指向头节点
+          let cur = head;
+          //定义数组用来存放结果
+          let result = [];
+          //循环链表，直到最后一个节点为止
+          while(cur){
+              //从数组的头部压入
+              result.unshift(cur.val);
+              //向下走
+              cur = cur.next;
+          }
+          return result;
+        }
+    </script>
+</body>
+
+</html>
