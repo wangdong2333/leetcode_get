@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述：
+        给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。 -->
+    <script>
+        function EntryNodeOfLoop(pHead) {
+            // 循环链表
+            while (pHead) {
+                //如果链表有flag标记，说明是链表中环的第一个节点
+                if (pHead.flag) {
+                    return pHead
+                }
+                //给每一个节点打上flag标记 
+                pHead.flag = true;
+                //往下走
+                pHead = pHead.next;
+            }
+            //没有的话，返回null
+            return null;
+        }
+    </script>
+</body>
+
+</html>
