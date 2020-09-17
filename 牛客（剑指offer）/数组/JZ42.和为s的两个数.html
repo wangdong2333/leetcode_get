@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，
+    如果有多对数字的和等于S，输出两个数的乘积最小的。
+    输出描述:
+    对应每个测试案例，输出两个数，小的先输出。 -->
+
+    <script>
+        //两数相加和为S，转化为S减其中一个数等于另一个数
+        function FindNumbersWithSum(array, sum) {
+            //定于对象用于存储数组中的数
+            let obj = {};
+            //定义数组，保存结果
+            let result = [];
+            //循环数组
+            for (let i = 0; i < array.length; i++) {
+                //如果对象中存储过这个值（说明当前这个值+曾经走过的那个值和为S），那么把它push进结果数组
+                if (obj[sum - array[i]] !== undefined) {
+                    var arr = []
+                    arr.push(array[i], (sum - array[i]))
+                    result.push(arr);
+                } else {
+                    //如果对象中没有存储过这个值，把它进行存储
+                    obj[array[i]] = i;
+                }
+            }
+            var min = Number.MAX_VALUE;
+            var minArray = [];
+            //循环找出乘积最小的一组
+            result.forEach(item => {
+                if (min > item[0] * item[1]) {
+                    min = item[0] * item[1];
+                    minArray = item;
+                }
+            })
+            //从小到大排序
+            minArray.sort((a, b) => a - b);
+            //返回数组
+            return minArray;
+        }
+    </script>
+</body>
+
+</html>
