@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述
+    给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],
+    其中B中的元素B[i]=A[0]*A[1]*...*A[i-1]*A[i+1]*...*A[n-1]。
+    不能使用除法。（注意：规定B[0] = A[1] * A[2] * ... * A[n-1]，B[n-1] = A[0] * A[1] * ... * A[n-2];）
+    对于A长度为1的情况，B无意义，故而无法构建，因此该情况不会存在。 -->
+
+    <script>
+        function multiply(array) {
+            //创建数组
+            let bArr = [];
+            //缓存长度
+            let len = array.length;
+            for (let i = 0; i < len; i++) {
+                //定义此时的值为1，方便做乘积
+                bArr[i] = 1;
+                for (let j = 0; j < len; j++) {
+                    //如果相等，则跳过
+                    if (i === j) continue;
+                    //做乘积
+                    bArr[i] *= array[j]
+                }
+            }
+            //返回结果数组
+            return bArr;
+        }
+    </script>
+</body>
+
+</html>
