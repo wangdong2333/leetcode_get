@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述
+    汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。
+    对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。
+    例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！ -->
+
+    <script>
+        function LeftRotateString(str, n) {
+            //判断如果字符串为空，返回“”
+            if (!str || str.length <= 0) return '';
+            //定义空字符串
+            var res = '';
+            //进行取余，目的是如果n超过字符串的长度，比如13%10，向左移13位，变为向左移3位
+            var num = n % str.length;
+            //以num为界限，分割字符串，在拼接
+            res = str.substr(num) + str.substr(0, num);
+            //返回结果
+            return res
+        }
+    </script>
+</body>
+
+</html>

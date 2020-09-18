@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述
+    将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0
+    -->
+    <script>
+        function StrToInt(str) {
+            //通过Number()方法尝试将这参数转换成Number类型,如果可以把它转化为整数，
+            //如果不可以返回NaN，NaN属于false value，所以返回0
+            return Number(str) ? parseInt(str) : 0;
+        }
+    </script>
+</body>
+
+</html>
