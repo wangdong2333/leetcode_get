@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function MoreThanHalfNum_Solution(numbers) {
+            // write code here
+            if (!numbers) return 0;
+            numbers.sort((a, b) => a - b);
+            console.log(numbers)
+            let len = numbers.length;
+            for (let i = 0; i < len; i++) {
+                let cur = numbers[i];
+                if ((numbers.lastIndexOf(cur) - numbers.indexOf(cur) + 1) > len / 2) {
+                    console.log()
+                    return cur
+                }
+            }
+            return 0;
+        }
+        console.log(MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2]))
+    </script>
+</body>
+
+</html>

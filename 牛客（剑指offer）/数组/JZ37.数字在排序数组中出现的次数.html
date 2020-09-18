@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述
+    统计一个数字在升序数组中出现的次数. -->
+    <script>
+        function GetNumberOfK(data, k) {
+            //定义count用于存储次数
+            let count = 0;
+            //对data进行循环
+            data.forEach(item => {
+                //如果出现过count就+1
+                if (item === k) {
+                    count++;
+                }
+            })
+            //返回count
+            return count;
+        }
+    </script>
+</body>
+
+</html>
