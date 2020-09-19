@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        题目描述:
+        操作给定的二叉树，将其变换为源二叉树的镜像。(说白了，反转二叉树)
+     -->
+    <script>
+        function Mirror(root) {
+            //递归的出口，如果不存在了，到底了，返回null
+            if (!root) {
+                return
+            }
+            //递归交换左孩子的子结点
+            let left = Mirror(root.left);
+            //递归交换右孩子的子结点
+            let right = Mirror(root.right);
+            //交换当前遍历的两个节点
+            root.left = right;
+            root.right = left;
+            return root;
+        }
+    </script>
+</body>
+
+</html>
