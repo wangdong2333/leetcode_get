@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述
+    从上往下打印出二叉树的每个节点，同层节点从左至右打印 (二叉树的层右)-->
+    <script>
+        //BFS+队列
+        function PrintFromTopToBottom(root) {
+            //处理边界，判断为空直接返回
+            if (!root) return [];
+            //定义存储结果的数组
+            let result = [];
+            //定义一个队列
+            let queue = [];
+            //将根节点push进去
+            queue.push(root);
+            // 当队列不为空时，反复执行
+            while (queue.length) {
+                //缓存长度
+                let len = queue.length;
+                for (let i = 0; i < len; i++) {
+                    //将第一个弹出
+                    let cur = queue.shift();
+                    //将当前节点推入结果数组
+                    result.push(cur.val);
+                    //如果有左节点，推到后面
+                    if (cur.left) {
+                        queue.push(cur.left);
+                    }
+                    //如果有右节点，推到后面
+                    if (cur.right) {
+                        queue.push(cur.right);
+                    }
+                }
+            }
+            //返回结果数组
+            return result;
+        }
+    </script>
+</body>
+
+</html>
