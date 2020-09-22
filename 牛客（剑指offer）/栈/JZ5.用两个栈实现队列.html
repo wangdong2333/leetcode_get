@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。 -->
+    <script>
+        //队列和栈二者都可以用数组模拟，区别就是栈是先进后出，队列是先进先出
+        //定义两个栈
+        var stack1 = [],
+            stack2 = [];
+        //push的话，正常push
+        function push(node) {
+            // write code here
+            stack1.push(node);
+        }
+        //模拟队列的pop，是需要pop出栈的最底部元素，
+        //所以把stack1中的队列先pop出来，在push进stack2队列就可以颠倒过来啦
+        function pop() {
+            // 当stack2里面没有值的时候
+            if (stack2.length <= 0) {
+                //当stack1里面有值的时候，就循环
+                while (stack1.length !== 0) {
+                    //将stack1中的值pop出来，push进stack2中
+                    stack2.push(stack1.pop())
+                }
+            }
+            //模拟队列的pop出来的值，都要从stack2中pop出来
+            return stack2.pop()
+        }
+    </script>
+</body>
+
+</html>
