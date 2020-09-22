@@ -9,22 +9,18 @@
 
 <body>
     <script>
-        function MoreThanHalfNum_Solution(numbers) {
-            // write code here
-            if (!numbers) return 0;
-            numbers.sort((a, b) => a - b);
-            console.log(numbers)
-            let len = numbers.length;
-            for (let i = 0; i < len; i++) {
-                let cur = numbers[i];
-                if ((numbers.lastIndexOf(cur) - numbers.indexOf(cur) + 1) > len / 2) {
-                    console.log()
-                    return cur
-                }
+        function HasSubtree(pRoot1, pRoot2) {
+            if (!pRoot1 || !pRoot2) {
+                return false;
             }
-            return 0;
+            return same(pRoot1, pRoot2) || HasSubtree(pRoot1.left, pRoot2) || HasSubtree(pRoot1.right, pRoot2);
+
+            function same(root1, root2) {
+                if (!root2) return true;
+                if (!root1) return false;
+                return root1.val === root2.val && same(root1.left, root2.left) && same(root1.right, root2.right);
+            }
         }
-        console.log(MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2]))
     </script>
 </body>
 

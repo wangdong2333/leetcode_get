@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述：
+    输入一棵二叉树，求该树的深度。
+    从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，
+    最长路径的长度为树的深度。 -->
+    <script>
+        //一直递归下去，知道最后一个节点无左右节点，那么返回 Math.max(0, 0) + 1 = 1
+        function TreeDepth(pRoot) {
+            // 递归的出口
+            if (!pRoot) {
+                return 0;
+            }
+            //递归左节点
+            let left = TreeDepth(pRoot.left);
+            //递归他的右节点
+            let right = TreeDepth(pRoot.right);
+            //计算当前节点的深度，返回
+            return Math.max(left, right) + 1;
+        }
+    </script>
+</body>
+
+</html>
