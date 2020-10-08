@@ -9,18 +9,25 @@
 
 <body>
     <script>
-        function HasSubtree(pRoot1, pRoot2) {
-            if (!pRoot1 || !pRoot2) {
-                return false;
+        var buildTree = function (pre, vin) {
+            if (!pre.length || !vin.length) {
+                return null;
             }
-            return same(pRoot1, pRoot2) || HasSubtree(pRoot1.left, pRoot2) || HasSubtree(pRoot1.right, pRoot2);
 
-            function same(root1, root2) {
-                if (!root2) return true;
-                if (!root1) return false;
-                return root1.val === root2.val && same(root1.left, root2.left) && same(root1.right, root2.right);
+            const rootVal = pre[0];
+            const node = new TreeNode(rootVal);
+
+             // i有两个含义，一个是根节点在中序遍历结果中的下标，另一个是当前左子树的节点个数
+            for (let i = 0; i < vin.length; i++) {
+                if (vin[i] === rootVal) {
+                    break;
+                }
             }
-        }
+
+            node.left = buildTree(pre.slice(1, i + 1), vin.slice(0, i));
+            node.right = buildTree(pre.slice(i + 1), vin.slice(i + 1));
+            return node;
+        };
     </script>
 </body>
 
