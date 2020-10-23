@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    一只青蛙一次可以跳上1级台阶，也可以跳上2级。
+    求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 -->
+
+    <script>
+        // 为了以防爆栈，定义cache进行缓存
+        let cache = {}
+
+        function jumpFloor(number) {
+            // 当为1或者2时，直接返回number（递归出口）
+            if (number === 1 || number === 2) {
+                return number;
+            }
+            // 如果已经计算过了，直接从缓存中取出返回即可
+            if (cache[number]) {
+                return cache[number]
+            }
+            // 递归调用，进行缓存
+            cache[number] = jumpFloor(number - 1) + jumpFloor(number - 2);
+            // 返回当前结果
+            return cache[number];
+        }
+    </script>
+</body>
+
+</html>
