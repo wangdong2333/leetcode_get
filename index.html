@@ -9,29 +9,19 @@
 
 <body>
     <script>
-        var res, path;
-        function FindPath(root, expectNumber) {
+        function FindGreatestSumOfSubArray(newArr) {
             // write code here
-            res = [];
-            path = [];
-            if (root == null) {
-                return []
-            };
-            cal(root, expectNumber);
-            return path;
-        }
-
-        function cal(node, exn) {
-            res.push(node.val);
-            if (node.val == exn && node.left == null && node.right == null) {
-                path.push(res.slice());
-            } else {
-                if (node.left != null) cal(node.left, exn - node.val);
-                if (node.right != null) cal(node.right, exn - node.val);
+            let len = newArr.length
+            let sum = 0
+            let max = newArr[0]
+            for (let i = 0; i < len; i++) {
+                sum += newArr[i]
+                max = max > sum ? max : sum
+                if (sum < 0) sum = 0
             }
-            res.pop()
+            return max
         }
-       
+        FindGreatestSumOfSubArray([6,-3,-4,7,-15,1,2,2])
     </script>
 </body>
 
