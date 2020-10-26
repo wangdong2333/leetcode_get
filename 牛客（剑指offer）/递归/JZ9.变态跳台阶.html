@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+    -->
+    <script>
+        // 变态跳台阶和跳台阶这两个问题本质上是一个问题。
+        // 区别在于跳台阶问题的第10层的算法为第9层+第8层，而变态跳台阶的第10层的算法为第9层+第8层+第7层+ ··· +第1层+1。
+        // 我们简单写一下是这样的：1 2 4 8 16 32 64 ……
+        function jumpFloorII(number) {
+            if (number == 1) {
+                return 1;
+            }
+            return jumpFloorII(number - 1) * 2;
+        }
+    </script>
+</body>
+
+</html>
