@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--题目描述:
+    输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。-->
+    <script>
+        function Merge(pHead1, pHead2) {
+            // 定义头结点，确保链表可以被访问到
+            let head = new ListNode(0);
+            // 定义指针，指向头节点
+            let cur = head;
+            // 当两个链表都存在时进行循环
+            while (pHead1 && pHead2) {
+                // 如果pHead1的值较小
+                if (pHead1.val < pHead2.val) {
+                    // 将pHead1的值作为下一个节点
+                    cur.next = pHead1;
+                    // pHead2链表向下走
+                    pHead1 = pHead1.next;
+                } else {
+                    // pHead2值较小时，将pHead2的值作为下一个节点
+                    cur.next = pHead2;
+                    // pHead2链表向下走
+                    pHead2 = pHead2.next;
+                }
+                // 每循环一次，指针往下走一个节点
+                cur = cur.next;
+            }
+            // 处理链表不等长的情况，哪个链表还有值就放在新链表的后面
+            cur.next = (pHead1 !== null ? pHead1 : pHead2);
+            // 返回新链表起始节点
+            return head.next;
+        }
+    </script>
+</body>
+
+</html>
