@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目描述:
+    输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。
+    假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，
+    但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）
+    -->
+
+    <script>
+        function IsPopOrder(pushV, popV) {
+            // 如果pushV或popV为空的话，直接返回
+            if (!pushV || !popV || pushV.length === 0 || popV.length === 0) {
+                return
+            }
+            // 定义一个辅助栈
+            let stack = [];
+            // 定义一个索引，用于在popV中移动
+            let index = 0;
+            // 循环栈的压入顺序的数组
+            for (let i = 0; i < pushV.length; i++) {
+                // 将值push进辅助栈中
+                stack.push(pushV[i]);
+                // 当辅助栈不为空，且最后一个值等于popV的第一个值的时候
+                while (stack.length !== 0 && stack[stack.length - 1] === popV[index]) {
+                    // 将辅助栈中的最后一个值弹出
+                    stack.pop();
+                    // index+1，在popV中向后移动一个
+                    index++;
+                }
+            }
+            // 如果辅助栈为空，说明是OK的
+            return stack.length === 0;
+        }
+    </script>
+</body>
+
+</html>
