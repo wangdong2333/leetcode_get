@@ -8,10 +8,22 @@
 </head>
 
 <body>
+    <!-- 题目描述:
+        把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+        输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。
+        NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
+    -->
     <script>
+        // 题中输入一个非递减排序的数组的“一个旋转”。例如：非递减数组[2,3,5,6,7]。旋转完 
+        // [3,5,6,7,2],[5,6,7,2,3],[6,7,2,3,5],[7,2,3,5,6]。这四个都可以当作本题的输入。
+        // 我们发现：旋转后的数组可以划分为两个有序的子区间，前面区间的元素都大于等于后面的元素，我们要找的是两个子区间的分界。
+        // 前面一定比后面的大，所以我们用二分法看看中间值是在大的部分，还是在小的部分，如果在大的部分就抛弃掉中间值左边的，
+        // 在小的部分就抛弃掉中间值右边的，抛弃掉的这部分一定大于等于最小值，不符合所以舍去，看代码。
+        
         function minNumberInRotateArray(rotateArray) {
             // 定义数组的左右边界
-            let left = 0,right = rotateArray.length - 1;
+            let left = 0,
+                right = rotateArray.length - 1;
             while (left < right) {
                 // 为了防止溢出问题，我们用left+(right-left)/2来取出中间值
                 const mid = Math.floor(left + (right - left) / 2);
@@ -22,14 +34,13 @@
                 else if (rotateArray[mid] < rotateArray[right]) {
                     right = mid
                 } // 如果相等，就right--或者left++，从新更新区间
-                 else {
+                else {
                     right--
                 }
             }
             // 此时left就是最小值
             return rotateArray[left]
         }
-        console.log(minNumberInRotateArray([2,7,6,3,5]));
     </script>
 </body>
 
